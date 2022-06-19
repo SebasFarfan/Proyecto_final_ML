@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+
+
+{% block titulo %}
+Buscar Producto
+{% endblock titulo %}
+
+
+{% block content %}
+<div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+        <h2>Buscar Productos Recomendados por <a href="http://www.mercadolibre.com.ar">Mercado Libre</a></h2>
+    </header>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <form action="/buscar-producto-ml/" method="post"> {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="txt-producto" placeholder="Ingresar Producto"
+                        aria-label="Ingresar Producto" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

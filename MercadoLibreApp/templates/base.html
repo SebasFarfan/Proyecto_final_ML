@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <title>
+        {% block titulo %}
+
+        {% endblock titulo %}
+    </title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">PRODUCTOS MERCADO LIBRE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Buscar' %}">Buscar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Listar</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                        Asignatura RAIn
+                    </span>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+
+
+
+    <footer>
+        <div class="container">
+            <p> Desarrollado por Sebastian Farfan </p>
+        </div>
+    </footer>
+
+
+
+
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

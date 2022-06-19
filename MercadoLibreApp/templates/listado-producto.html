@@ -1,0 +1,41 @@
+{% extends './base.html' %}
+
+
+{% block titulo %}
+Productos
+{% endblock titulo %}
+
+
+{% block content %}
+
+<div class="table-responsive py-2 ">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Dirección</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for producto in productos %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>$ {{producto.precio}}</td>
+                    <td><a href="{{producto.url}}">Ir al sitio web del Producto</a></td>                    
+                    <td><img src="{{producto.imag}}" class="rounded mx-auto d-block" alt=""></td>
+                    
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}
