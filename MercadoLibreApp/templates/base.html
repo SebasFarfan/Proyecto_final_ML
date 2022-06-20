@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesomefree/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <title>
         {% block titulo %}
 
@@ -18,7 +20,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">PRODUCTOS MERCADO LIBRE</a>
+                <a class="navbar-brand" href="#"><img src="{% static 'img/mercadolibre.svg' %}" alt="" width="60" height="60"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,13 +28,13 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a>
+                            <a class="nav-link {% if request.path == '/' %} active {% endif %}" aria-current="page" href="{% url 'Home' %}"> <i class="fa-solid fa-house"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'Buscar' %}">Buscar</a>
+                            <a class="nav-link {% if request.path == '/buscar-producto' %} active {% endif %}" href="{% url 'Buscar' %}"> <i class="fa-solid fa-magnifying-glass"></i> Buscar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Listar</a>
+                            <a class="nav-link {% if request.path == '/listado' %} active {% endif %}" href="#">Listar</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -49,11 +51,20 @@
 
 
 
-    <footer>
-        <div class="container">
-            <p> Desarrollado por Sebastian Farfan </p>
-        </div>
-    </footer>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-6 d-flex align-items-center">            
+            <span class="mb-3 mb-md-0 text-muted">&copy; 2022 |</span>
+            <span class="mb-3 mb-md-0 text-muted">DESARROLLADO POR SEBASTIÁN JORGE FARFÁN</span>
+          </div>
+      
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">                        
+            <li class="ms-3"><a href="mailto:sebas.654@gmail.com"> <i class="fa-solid fa-envelope"></i></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"> <i class="fa-brands fa-facebook"></i></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"> <i class="fa-brands fa-github"></i></a></li>
+          </ul>
+        </footer>
+      </div>
 
 
 
