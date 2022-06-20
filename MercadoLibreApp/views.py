@@ -42,3 +42,28 @@ def busqueda_producto(request):
 
     except:
         print('An exception occurred')
+
+def busqueda_varios_productos(request):
+    lista_request = []
+    lista_productos_encontrados = []
+
+    producto_1 = request.POST['producto-1']
+    lista_request.append(producto_1)
+    producto_2 = request.POST['producto-2']
+    lista_request.append(producto_2)
+    producto_3 = request.POST['producto-3']
+    lista_request.append(producto_3)
+    producto_4 = request.POST['producto-4']
+    lista_request.append(producto_4)
+    producto_5 = request.POST['producto-5']
+    lista_request.append(producto_5)
+
+    for producto in lista_request:
+        if len(producto):
+            lista_producto = buscador_producto.realizar_busqueda(producto)
+            if len(lista_producto):
+                for prod in lista_producto:
+                    p = Producto(prod[0],prod[1],prod[2],prod[3])
+                    lista_productos_encontrados.append(p)
+    
+    return render(request,'listado-producto.html', {'productos':lista_productos_encontrados})    

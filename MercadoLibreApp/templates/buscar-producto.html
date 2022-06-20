@@ -12,6 +12,7 @@ Buscar Producto
         <h2>Buscar Productos Recomendados por <a href="http://www.mercadolibre.com.ar">Mercado Libre</a></h2>
     </header>
 
+    <!-- busqueda de un solo producto -->
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
             <form action="/buscar-producto-ml/" method="post"> {% csrf_token %}
@@ -23,5 +24,81 @@ Buscar Producto
             </form>
         </div>
     </div>
+
+    <!-- busqueda de varios productos -->
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="pb-5">
+            <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                Busqueda de hasta 5 productos
+            </button>
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <!-- campos de busqueda -->
+                <div class="container-fluid py-5">
+                    <form action="/buscar-varios-productos/" method="post"> {% csrf_token %}
+                        <div class="input-group">
+                            <span class="input-group-text bg-info">Producto 1</span>
+                            <input type="text" aria-label="producto 1" name="producto-1" class="form-control">
+                        </div>
+
+                        <button class="btn btn-info mt-3" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseProducto2" aria-expanded="false" aria-controls="collapseProducto2">
+                            agregar otro
+                        </button>
+                        <div class="collapse py-3" id="collapseProducto2">
+                            <div class="input-group">
+                                <span class="input-group-text bg-info">Producto 1</span>
+                                <input type="text" aria-label="producto 2" name="producto-2" class="form-control">
+                            </div>
+                            <button class="btn btn-info mt-3" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseProducto3" aria-expanded="false"
+                                aria-controls="collapseProducto3">
+                                agregar otro
+                            </button>
+                        </div>
+                        <div class="collapse py-3" id="collapseProducto3">
+                            <div class="input-group">
+                                <span class="input-group-text bg-info">Producto 3</span>
+                                <input type="text" aria-label="producto 3" name="producto-3" class="form-control">
+                            </div>
+                            <button class="btn btn-info mt-3" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseProducto4" aria-expanded="false"
+                                aria-controls="collapseProducto4">
+                                agregar otro
+                            </button>
+                        </div>
+                        <div class="collapse py-3" id="collapseProducto4">
+                            <div class="input-group">
+                                <span class="input-group-text bg-info">Producto 3</span>
+                                <input type="text" aria-label="producto 4" name="producto-4" class="form-control">
+                            </div>
+                            <button class="btn btn-info mt-3" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseProducto5" aria-expanded="false"
+                                aria-controls="collapseProducto5">
+                                agregar otro
+                            </button>
+                        </div>
+                        <div class="collapse py-3" id="collapseProducto5">
+                            <div class="input-group">
+                                <span class="input-group-text bg-info">Producto 5</span>
+                                <input type="text" aria-label="producto 5" name="producto-5" class="form-control">
+                            </div>                            
+                        </div>
+                        <div class="d-grid gap-2 mt-5">
+                            <button type="submit" class="btn btn-primary" type="button">BUSCAR</button>                            
+                          </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 {% endblock content %}
