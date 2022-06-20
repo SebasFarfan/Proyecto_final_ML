@@ -7,4 +7,6 @@ urlpatterns = [
     path('buscar-producto', views.buscar_producto, name='Buscar'),
     path('buscar-producto-ml/',views.busqueda_producto),
     path('buscar-varios-productos/',views.busqueda_varios_productos),
+    path('envio-alerta/',views.envio_correo),
+    path('enviar/',views.contacto),
 ]

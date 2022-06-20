@@ -7,40 +7,54 @@ Productos
 
 
 {% block content %}
-<div class="p-3 mb-4 mt-5 bg-light rounded-3">
-    <div class="container-fluid py-5">
-        <header class="pb-3 mb-2 border-bottom">
-            <h2 class="display-5 fw-bold text-center">Listado de Productos recomendados</h2>
-        </header>        
-        <div class="table-responsive py-2 ">
-            <table class="table table-hover">
-                <thead>
-                    <tr class="table-success">
-                        <th>#</th>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Dirección</th>
-                        <th>Imagen</th>
-                    </tr>
-                </thead>
-                <tbody>
+<div class="container">
 
-                    {% for producto in productos %}
-                    <tr>
-                        <td>{{forloop.counter}}</td>
-                        <td>{{producto.nombre}}</td>
-                        <td>$ {{producto.precio}}</td>
-                        <td><a href="{{producto.url}}">Ir al sitio web del Producto</a></td>
-                        <td><img src="{{producto.imag}}" class="rounded mx-auto d-block" alt=""></td>
 
-                    </tr>
+    <div class="p-3 mb-4 mt-5 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <header class="pb-3 mb-2 border-bottom">
+                <h2 class="display-5 fw-bold text-center">Listado de Productos recomendados</h2>
+            </header>
+            <div class="container">
+                <div class="table-responsive py-2 ">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-success">
+                                <th>#</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Dirección</th>
+                                <th>Imagen</th>
+                                <th>Opción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                    {% endfor %}
+                            {% for producto in productos %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{producto.nombre}}</td>
+                                <td>$ {{producto.precio}}</td>
+                                <td><a href="{{producto.url}}">Ir al sitio web del Producto</a></td>
+                                <td><img src="{{producto.imag}}" class="rounded mx-auto d-block" alt=""></td>
+                                <td>
+                                    <form action="/envio-alerta/" method="post"> {% csrf_token %} <input name="nombre"
+                                            type="hidden" value="{{producto.nombre}}"><input name="precio" type="hidden"
+                                            value="{{producto.precio}}"><input name="url" type="hidden"
+                                            value="{{producto.url}}"><button type="submit" class="btn btn-warning"> <i
+                                                class="fa-solid fa-paper-plane"></i> </button></form>
+                                </td>
 
-                </tbody>
-            </table>
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
-
 {% endblock content %}

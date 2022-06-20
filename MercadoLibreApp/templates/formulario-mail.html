@@ -1,0 +1,43 @@
+{% extends './base.html' %}
+
+
+{% block titulo %}
+Envio de Alerta
+{% endblock titulo %}
+
+
+{% block content %}
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header text-bg-primary">
+            Formulario de Correo
+        </div>
+        <div class="card-body">
+            <form action="/enviar/" method="post"> {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Dirección de Correo</label>
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                        placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="asunto" class="form-label">Asunto</label>
+                    <input type="text" name="asunto" class="form-control" id="asunto" placeholder="asunto">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                    <textarea class="form-control" name="mensaje" id="exampleFormControlTextarea1" rows="3">
+                    Producto:{{producto.nombre}} 
+                    Precio:{{producto.precio}}  
+                    {{producto.url}}
+                </textarea>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary me-md-2" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

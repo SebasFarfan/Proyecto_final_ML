@@ -1,8 +1,11 @@
+from django.conf import settings
 from django.shortcuts import render
-
+from django.core.mail import send_mail
+from django.conf import settings
 from scraper import buscador_producto
 
 # Create your views here.
+
 
 class Producto(object):
     def __init__(self, nombre,precio,url,imag):
@@ -67,3 +70,15 @@ def busqueda_varios_productos(request):
                     lista_productos_encontrados.append(p)
     
     return render(request,'listado-producto.html', {'productos':lista_productos_encontrados})    
+
+def envio_correo(request,):
+    prod = Producto(request.POST['nombre'],request.POST['precio'],request.POST['url'],'')
+    return render(request,'formulario-mail.html',{'producto':prod})
+
+def contacto(request):
+    subject = request.POST['asunto']
+    mensaje = request.POST['mensaje']+' '+request.POST['email']
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [request.POST['email']]
+    send_mail(subject,mensaje,email_from,recipient_list)
+    return render(request, 'gracias.html')

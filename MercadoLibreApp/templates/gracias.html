@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+
+{% block titulo %}
+Confirmación
+{% endblock titulo %}
+
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-md-center mt-10">
+        <div class="col-6">
+            <div class="card  text-center">
+                <div class="card-header text-center text-bg-success">
+                    Confirmación de envio de email
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">el envio del correo fue exitosa</h5>
+                    <p class="card-text" text-success><i class="fa-solid fa-circle-check"></i></p>
+                    <a href="{% url 'Home' %}" class="btn btn-success">Aceptar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

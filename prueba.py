@@ -23,3 +23,18 @@ print(listaa)
 print('longitud palabra 2:',len(palabra2))
 # palabra11 = str.split(palabra3)
 # print('longitud palabra 11:',len(palabra11))
+
+class Producto(object):
+    def __init__(self, nombre,precio,url,imag):
+        self.nombre=nombre
+        self.precio=precio
+        self.url=url
+        self.imag=imag
+
+lista111 = []
+p1 = Producto('sebastian','123','hhtt://djdj/aas','imagen3')
+lista111.append(p1)
+p2 = Producto('analia','098','hhtt://djdj/aas','imagen3')
+lista111.append(p2)
+
+
