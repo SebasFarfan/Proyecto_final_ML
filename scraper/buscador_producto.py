@@ -37,21 +37,21 @@ def obtener_productos_recomendado(elemento_html):
     bloque_producto = elemento_html.find_all(
         'li', {'class': 'ui-search-layout__item'})
     for bloque in bloque_producto:
-        recomendado = bloque.find(
-            'label', {'class': 'ui-search-styled-label ui-search-item__highlight-label__text'})
-        if recomendado != None:
-            prod = []
-            descr = obtener_descripcion_producto(bloque)
-            prod.append(descr)
-            precio = obtener_precio_producto(bloque)
-            traslator = str.maketrans('', '', string.punctuation)
-            precio_numero = precio.translate(traslator)    
-            prod.append(float(precio_numero))
-            enlace = obtener_enlace_producto(bloque)
-            prod.append(enlace)
-            imagen = obtener_imagen_producto(bloque)
-            prod.append(imagen)
-            productos_recomendados.append(prod)
+        # recomendado = bloque.find(
+        #     'label', {'class': 'ui-search-styled-label ui-search-item__highlight-label__text'})
+        # if recomendado != None:
+        prod = []
+        descr = obtener_descripcion_producto(bloque)
+        prod.append(descr)
+        precio = obtener_precio_producto(bloque)
+        traslator = str.maketrans('', '', string.punctuation)
+        precio_numero = precio.translate(traslator)    
+        prod.append(float(precio_numero))
+        enlace = obtener_enlace_producto(bloque)
+        prod.append(enlace)
+        imagen = obtener_imagen_producto(bloque)
+        prod.append(imagen)
+        productos_recomendados.append(prod)
     return productos_recomendados
 
 
