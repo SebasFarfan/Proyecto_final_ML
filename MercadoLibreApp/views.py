@@ -1,7 +1,9 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.core.mail import send_mail
 from django.conf import settings
+
+from .models import Nombre_producto
 from scraper import buscador_producto, comparar
 
 # Create your views here.
@@ -86,3 +88,27 @@ def contacto(request):
     recipient_list = [request.POST['email']]
     send_mail(subject,mensaje,email_from,recipient_list)
     return render(request, 'gracias.html')
+
+def listado_productos_buscar(request):
+    nombre_productos = Nombre_producto.objects.all()
+    return render(request, 'listado.html', {'nombres':nombre_productos})
+
+def agregar_nombre_producto(request):
+    nombre_prod = request.POST['nombre-producto']
+    nombre_producto = Nombre_producto.objects.create(nombre=nombre_prod)
+    return redirect('/listado-productos-buscar')
+
+def buscar_varios_productos(request):
+    lista_productos_encontrados=[]
+    nombre_productos = Nombre_producto.objects.all()
+    for producto in nombre_productos:
+        if len(producto.nombre):
+            lista_producto = buscador_producto.realizar_busqueda(producto.nombre)
+            lista_filtrada = comparar.filtrar_datos(lista_producto,producto.nombre)
+            
+            if len(lista_producto):
+                for prod in lista_filtrada:
+                    p = Producto(prod[0],prod[1],prod[2],prod[3])
+                    lista_productos_encontrados.append(p)
+    
+    return render(request,'listado-producto.html', {'productos':lista_productos_encontrados,'cantidad':len(lista_productos_encontrados)})

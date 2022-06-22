@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-warning bg-warning">
             <div class="container-fluid">
@@ -34,7 +35,7 @@
                             <a class="nav-link {% if request.path == '/buscar-producto' %} active {% endif %}" href="{% url 'Buscar' %}"> <i class="fa-solid fa-magnifying-glass"></i> BUSCAR</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/listado' %} active {% endif %}" href="#">LISTAR</a>
+                            <a class="nav-link {% if request.path == '/listado' %} active {% endif %}" href="{% url 'Listado' %}"> <i class="fa-solid fa-magnifying-glass"></i> LISTA BUSQUEDA</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -70,6 +71,7 @@
 
 
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,68 @@
+{% extends './base.html' %}
+
+{% block titulo %}
+Listado Productos
+{% endblock titulo %}
+
+
+{% block content %}
+<div class="container">
+    <div class="p-3 mb-4 mt-5 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <header class="pb-3 mb-2 border-bottom">
+                <h2 class="display-5 fw-bold text-center" id="titulo-listado">Listado de Productos a Buscar</h2>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <h4> <span class="badge rounded-pill bg-danger">{{cantidad}}</span></h4>
+                </div>
+            </header>
+        </div>
+        
+
+        <div class="table-responsive py-2 ">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-success">
+                        <th>#</th>
+                        <th>Producto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for producto in nombres %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{producto.nombre}}</td>
+                    </tr>
+                    {% endfor %}
+                    <div class="py-2">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="collapse pb-5" id="collapseExample">
+                        <div class="card card-body">
+                            <div class="input-group mb-3">
+                                <form action="/agregar-lista/" method="post"> {% csrf_token %}
+                                    <input type="text" class="form-control" name="nombre-producto" placeholder="ingresar producto"
+                                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
+                                            class="fa-solid fa-plus"></i> Agregar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </tbody>
+            </table>
+            <div class="py-3">
+                <form action="/buscar-productos-lista/" method="post"> {% csrf_token %}
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="submit"> <i class="fa-solid fa-magnifying-glass"></i> Buscar</button>                        
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
