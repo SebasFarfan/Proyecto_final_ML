@@ -38,3 +38,7 @@ p2 = Producto('analia','098','hhtt://djdj/aas','imagen3')
 lista111.append(p2)
 
 
+lista_ejemplo = ['1','2']
+print(len(lista_ejemplo))
+for i in range(len(lista_ejemplo)):
+    print(i)

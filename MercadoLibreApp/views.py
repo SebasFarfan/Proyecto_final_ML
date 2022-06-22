@@ -63,17 +63,6 @@ def busqueda_varios_productos(request):
         producto_post = request.POST[elemento]
         lista_request.append(producto_post)
 
-    # producto_1 = request.POST['producto-1']
-    # lista_request.append(producto_1)
-    # producto_2 = request.POST['producto-2']
-    # lista_request.append(producto_2)
-    # producto_3 = request.POST['producto-3']
-    # lista_request.append(producto_3)
-    # producto_4 = request.POST['producto-4']
-    # lista_request.append(producto_4)
-    # producto_5 = request.POST['producto-5']
-    # lista_request.append(producto_5)
-
     for producto in lista_request:
         if len(producto):
             lista_producto = buscador_producto.realizar_busqueda(producto)

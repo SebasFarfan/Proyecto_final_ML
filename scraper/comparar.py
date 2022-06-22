@@ -83,23 +83,29 @@ def lista_filtrada(lista_completa,prod):
     return lista_definitiva
 
     
-lista_prodddd=[['Motorola G8 4ram','34444'],['Moto Edge','123'],['Motorola G7 ert','1234']]
-productito='motorola g8'
+# lista_prodddd=[['Motorola G8 4ram','34444'],['Moto Edge','123'],['Motorola G7 ert','1234']]
+# productito='motorola g8'
 # print(lista_filtrada(lista_ro,produdctio))
 
-def filtrar_datos(lista_ro,produdctio):
+def filtrar_datos(lista_productos,producto):
 
-    lista_pp=extraer_titulo(lista_ro)
-    dic_conte=obtener_datos(lista_pp,produdctio)
+    lista_titulos=extraer_titulo(lista_productos)
+    dic_conte=obtener_datos(lista_titulos,producto)
     print(type(dic_conte))
+    print('--','diccionario de titulos','--')
+    print(dic_conte)
     tfidf = TfidfVectorizer()
     # crea objeto de la matriz TF-IDF con los datos
     tfs = tfidf.fit_transform(dic_conte.values())
     # se convierte el diccionario en una lista
     lista_contenido = list(dic_conte.items())
+    print('--','se convierte el diccionario en una lista','--')
     print(lista_contenido)
+    # posicion a comparar. siempre a comparar con el ultimo elemento
+    posicion = len(lista_contenido)-1
+    print('ultimo elemento-->',lista_contenido[len(lista_contenido)-1])
     lista_similaress =[]
-    for indice, score in find_similar(tfs, 0):
+    for indice, score in find_similar(tfs, (len(lista_contenido)-1)):
             # print(str(round(score,10)),lista_contenido[indice][0])
             # print('-'*100)
             if score>0.1 :
@@ -107,33 +113,33 @@ def filtrar_datos(lista_ro,produdctio):
     print(lista_similaress)
     lista_definitiva=[]
     for i in range(len(lista_similaress)):
-        if i >0:
-            print(lista_contenido[lista_similaress[i]])
-            lista_definitiva.append(lista_contenido[lista_similaress[i]])
+        # if i >0:
+        print(lista_contenido[lista_similaress[i]])
+        lista_definitiva.append(lista_contenido[lista_similaress[i]])
 
     print(lista_definitiva)
-    print(lista_definitiva[0][1])
+    # for i in range(len(lista_definitiva)):
+    #     print(lista_definitiva[i][1])
     lista_definitivaff=[]
 
-    for producto in lista_ro:
-            for titulo in lista_definitiva:
-
-                if titulo[1]== producto[0].lower():
-                    lista_definitivaff.append(producto)
-                    break
+    for producto in lista_productos:
+        for titulo in lista_definitiva:
+            if titulo[1]== producto[0].lower():
+                lista_definitivaff.append(producto)
+                break
     # print(lista_definitivaff)
     return(lista_definitivaff)
 
-print(filtrar_datos(lista_prodddd,productito))
+# print(filtrar_datos(lista_prodddd,productito))
 # lista_titulos = ['motorola g8','Moto E40 64 GB gris acero 4 GB RAM', 'Motorola Moto G8 Power Lite 64 Gb Azul Bueno',
 #  'Motorola Moto G8 Plus Xt2019 64gb Refabricado Azul', 'Moto G60s 128 GB azul 6 GB RAM']
 # diccionario_conte = obtener_datos(lista_titulos)
 # tfidf = TfidfVectorizer()
 
-# # crea objeto de la matriz TF-IDF con los datos
+# crea objeto de la matriz TF-IDF con los datos
 # tfs = tfidf.fit_transform(diccionario_conte.values())
 
-# # se convierte el diccionario en una lista
+# se convierte el diccionario en una lista
 # lista_contenido = list(diccionario_conte.items())
 
 # lista_similaress =[]
@@ -148,3 +154,5 @@ print(filtrar_datos(lista_prodddd,productito))
 # for valor in lista_similaress:
 #     print(lista_titulos[valor])
     
+# print('-'*50)
+# print(filtrar_datos(lista_prodddd,productito))
