@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # agrega la app de ML
     'MercadoLibreApp',
+    # agrega la libreria para trabajar con web scraping
     'scraper',
+    # libreria para iconos
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +128,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# envio de mail
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_USE_TLS=True
+EMAIL_PORT=587
+EMAIL_HOST_USER='29496334@fi.unju.edu.ar' # dato a borrar
+EMAIL_HOST_PASSWORD='asdfghjkl' # dato a borrar
