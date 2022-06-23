@@ -27,11 +27,7 @@ def buscar_producto(request):
 
 def busqueda_producto(request):
     producto = request.POST['txt-producto']
-    # lista_a=[['sebas','202','algo'],['ana','21','ld']]
     
-    
-    # return render(request,'listado-producto.html',{'productos':lista_a})
-
     try:
         lista_productos = buscador_producto.realizar_busqueda(producto)        
         lista_final = []
@@ -49,6 +45,7 @@ def busqueda_producto(request):
 
     except:
         print('An exception occurred')
+
 
 def busqueda_varios_productos(request):
     lista_request = []

@@ -36,10 +36,7 @@ def obtener_productos_recomendado(elemento_html):
     productos_recomendados = []
     bloque_producto = elemento_html.find_all(
         'li', {'class': 'ui-search-layout__item'})
-    for bloque in bloque_producto:
-        # recomendado = bloque.find(
-        #     'label', {'class': 'ui-search-styled-label ui-search-item__highlight-label__text'})
-        # if recomendado != None:
+    for bloque in bloque_producto:        
         prod = []
         descr = obtener_descripcion_producto(bloque)
         prod.append(descr)

@@ -5,7 +5,7 @@ import warnings
 
 warnings.filterwarnings('ignore')
 
-def find_similar(tfidfMatrix, indice, top_n=3):
+def find_similar(tfidfMatrix, indice, top_n=10):
     '''
     Método que busca documentos similares usando metodo de coseno de linear_kernel. \n
     en base a ese cálculo que se realiza se obtiene un valor que representa que tan parecido \n
